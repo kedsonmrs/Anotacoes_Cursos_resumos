@@ -1,0 +1,42 @@
+# OPERADORES ARITMETICOS
+
+# SOMA '+' / SUBTRAÇAO '-' / MULTIPLICAÇAO '*' / DIVISAO '/' / POTENCIA '**' / MODULO '%'
+# EXEMPLOS
+X = 3 + 3 / X = 3 - 3 / X = 3 * 3 / X = 3 / 3 / X = 3**3 / X = 3 % 3
+
+#FUNÇAO 'NOMEFX(PARAMETRO)' 
+#EXEMPLO
+
+#FUNÇAO 'TYPE()' RETORNA O TIPO DO DADO
+TYPE(5) or TYPE(VAR)
+
+#OPERAÇAO COM DADO DE TIPO FLOAT
+#INT com FLOAT da FLOAT (exceto divisao que devolve float entre INT)
+#para forçar INT na divisao se usa o '//'
+
+#CONVERSÃO PARA BIN/HEX
+bin(129) / hex(129)
+
+#ABS (MODULO, VALOR ABSOLUTO) / ROUND (ARREDONDA O NUMERO EM CASAS) / POW (POTENCIA)
+abs(-10) 'retorna 10'
+round(3.213412,2) 'parametro 1 - numero, parametro 2 - numero de casas'
+pow(4,3) 'parametro 1 - base, parametro 2 - potencia'
+
+#VARIAVEIS
+#NAO PODE COMEÇAR NOME DA VARIAVEL COM NUMERO
+#NAO PODE USAR PALAVRA RESERVADA COMO NOME (COMANDOS)
+
+#ATRIBUINDO VALOR A VARIAVEL '='
+VAR = 1
+
+#IMPRIMINDO VARIAVEL
+print(VAR) or VAR
+
+#POSSO DECLARAR MAIS DE UMA VARIAVEL EM UMA MESMA LINHA USANDO VIRGULA
+var1, var2, var3 = 'BOB', 'MARIA', 'ANA'
+
+#OPERAÇOES ARITMETICAS SAO LIVRES COM VARIAVEIS
+var3 = var2 * var1
+
+#PYTHON É !!!!!!!!!CASE SENSITIVE!!!!!!!!!
+
