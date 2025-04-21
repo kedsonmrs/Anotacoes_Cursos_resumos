@@ -17,7 +17,9 @@ TYPE(5) or TYPE(VAR)
 #CONVERSÃO PARA BIN/HEX
 bin(129) / hex(129)
 
-#ABS (MODULO, VALOR ABSOLUTO) / ROUND (ARREDONDA O NUMERO EM CASAS) / POW (POTENCIA)
+#ABS (MODULO, VALOR ABSOLUTO)
+#ROUND (ARREDONDA O NUMERO EM CASAS)
+#POW (POTENCIA)
 abs(-10) 'retorna 10'
 round(3.213412,2) 'parametro 1 - numero, parametro 2 - numero de casas'
 pow(4,3) 'parametro 1 - base, parametro 2 - potencia'
@@ -38,5 +40,106 @@ var1, var2, var3 = 'BOB', 'MARIA', 'ANA'
 #OPERAÇOES ARITMETICAS SAO LIVRES COM VARIAVEIS
 var3 = var2 * var1
 
-#PYTHON É !!!!!!!!!CASE SENSITIVE!!!!!!!!!
+#STRING
+
+#USAR '\N' NA STRING DA ENTER E QUEBRA LINHA
+print('Teste \n Enter1')
+
+#INDEXIZAÇAO (posiçao das letras em uma string) COMEÇA POR 0
+#VAR seguido de COLCHETES e o NUMERO DA LETRA imprime ela
+var = "teste"
+var[0]
+
+#dois pontos ':' determina intervalo no index
+#ao omitir apos ou antes os ':' determina tudo
+#numero APOS ':' é EXCLUSIVE
+var[1:]
+var[:3]
+
+#AO UTILIZAR O NEGATIVO LE AO CONTRARIO A STRING
+#VAZIO AINDA SIGNIFICA TUDO E O EXCLUSIVE SE MANTEM APOS OS ':'
+var[:-1]
+
+# UTILIZANDO '::' , SINTAXE [INICIO:FIM:PASSO]
+# PASSO NEGATIVO INVERTE A LEITURA
+var[1:2:1]
+
+#NAO SE PODE MODIFICAR O VALOR DE UM CARACTER DA STRING POR FORA
+
+#STRING em python aceita aspas duplas ou simples
+#PRINT para string tem que ser entre aspas
+print('Teste string')
+
+#FUNÇOES BUILT-IN 
+
+#TUDO PRA MAIUSCULO
+var.upper()
+
+#TUDO PRA MINUSCULO
+var.lower()
+
+#QUEBRA A LINHA A CADA ESPAÇO
+#POR PADRAO QUEBRA A CADA ESPAÇO, PODE ESPECIFICAR QUAL CARACTER DENTRO DO ()
+var.split()
+
+#FUNÇOES PARA STRING
+
+#CONVERTE A PRIMEIRA LETRA PRA MAIUSCULO
+var.captalize()
+
+#CONTA QUANTAS VEZES TEM O CARACTER DEFINIDO NA STRING
+var.count(a)
+
+#RETORNA T/F BOOLEANO CASO SEJA OU NAO TODA DE NUMERO A STRING
+var.isalnum()
+
+#RETORNA T/F BOOLEANO CASO SEJA OU NAO TODA DE LETRA MINUSCULA A STRING
+var.islower()
+
+#RETORNA T/F BOOLEANO CASO SEJA OU NAO TODA DE ESPAÇO
+var.isspace()
+
+#RETORNA T/F BOOLEANO CASO TERMINE OU NAO COM A LETRA DEFINIDA COMO PARAMETRO
+var.endswith('a')
+
+#COMPARANDO DUAS STRING RETORNANDO BOOLEANO
+print("Python" == "a")
+False
+
+#ESTRUTURA DE DADOS EM PYTHON !!!!!
+
+#CRIANDO LISTA
+lista = ["arroz","feijao","frango","ovo"]
+
+#DA PRA ARMAZENAR MAIS DE UM TIPO DE DADO NA LISTA
+lista = ["arroz",2,"feijao",2.1,"frango"]
+
+#INDEXIZAÇAO EM LISTA FUNCIONA COMO NA DE STRING, MAS AO INVES DE LETRA POR LETRA É ITEM POR ITEM
+#TAMBEM COMEÇA POR ZERO!!
+item1 = lista[0]
+item2 = lista[1]
+
+#DIFERENTE DA STRING, PODE MODIFICAR O VALOR DE UM ITEM DENTRO DA LISTA
+lista = ["arroz","feijao","frango","ovo"]
+item[0] = "carne"
+lista = ["carne","feijao","frango","ovo"]
+
+#TAMBEM POSSO DELETAR UM ITEM DENTRO DA LISTA
+#AO DELETAR UM ITEM A LISTA SE REORGANIZA E NAO FICA NULO O ITEM DELETADO
+del lista[0]
+
+#LISTA DENTRO DE LISTA
+#ATRAVES DE VARIAVEIS DA PRA IR QUEBRANDO AS LISTAS
+#EXEMPLO
+lista1[[1,2,3],[4,5,6],[7,8,9,10]]
+a = lista1[1]
+b = a[0]
+
+#AGORA SENDO DIRETO E MELHOR
+#CADA CHAVE VAI ENTRANDO NOS SUBGRUPOS
+print(lista1[1][0])
+
+
+
+
 
