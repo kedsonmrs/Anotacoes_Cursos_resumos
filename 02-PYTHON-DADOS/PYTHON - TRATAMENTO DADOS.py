@@ -186,6 +186,7 @@ lista.sort()
 lista.count(10)
 
 #DESCOBRINDO INDEX DE UM VALOR EM UMA LISTA
+#SOMENTE RETORNA VALOR UNITARIO
 lista.index(2)
 
 #DICIONARIO
@@ -242,6 +243,68 @@ dic1{"dic1.1":{"dic1.2":1000}}
 
 #BUSCANDO VALOR DENTRO DOS DICIONARIOS, MESMO QUE A LISTA, CHAVES ATE IR NO VALOR DO SUBGRUPO SO QUE NESSE POR CHAVE AO INVES DE INDEX
 print(dic1["dic1.1"]["dic1.2"])
+
+#TUPLAS
+#FEITA ENTRE PARENTESES
+#NAO IMUTAVEIS, CRIADAS PARA ESTE FIM
+tupla = ("Chocolate","Laranja")
+
+#CONVERTENDO TUPLA PARA LISTA, CRIA-SE OUTRO ELEMENTO
+list('nome da copia')
+
+#LISTA PARA TUPLA, APOS MODIFICAÇAO SE USAR O MESMO NOME DE VAR ELE SOBREPOE
+tuple('nome da copia')
+
+#CAP05 - ESTRUTURAS DE PROGRAMAÇAO PYTHON
+
+#CONDICIONAL IF/ELSE , CASO  NAO SATISFAÇA CAI PARA O ELSE E EXECUTA
+#IDENTAÇAO É PARTE DA SINTAXE DO PYTHON
+if 5 > 2:
+    print("É verdade")
+else:
+    print("Náo é verdadeira")
+
+#COM VARIAVEL AGORA
+x = "Segunda"
+if x == "Segunda":
+    print("É segunda-feira")
+else:
+    print("Não é segunda-feira")
+
+#UTILIZANDO ELIF PARA CRIAR MAIS SITUAÇOES
+x = "Segunda"
+if x == "Segunda":
+    print("É segunda-feira")
+elif x == "Terça":
+    print("Hoje é terça-feira")
+else:
+    print("Não é segunda e nem terça")
+
+#IF'S ANINHADOS
+nome = "Bob"
+idade = 14
+if idade > 13:
+    if nome == "Bob":
+        print("Não esta autorizado")
+    else:
+        print("Esta autorizado")
+else:
+    print("Nao esta autorizado")
+
+#SIMPLIFICANDO O CASO ACIMA COM OPERADOR LOGICO
+nome = "Bob"
+idade = 12
+if (idade > 13) and (nome == "Bob"):
+    print("Não esta autorizado")
+elif idade > 13:
+    print("Esta autorizado")
+else:
+    print("Não esta autorizado, menor de idade")
+    
+
+
+
+
 
 
 
