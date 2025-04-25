@@ -301,14 +301,157 @@ elif idade > 13:
 else:
     print("Não esta autorizado, menor de idade")
     
+#SINAL DE DIFERENTE '!='
 
+#LOOPS
+#FOR IN X - COM UM GRUPO DE DADOS JA DEFINIDOS EM UMA LISTA/TUPLA
+tp = (2,3,4) 
+for i in tp: #PARA CADA NUMERO NESSA LISTA, FAÇA
+    print(i)
+    
+#FOR IN RANGE - COM UM GRUPO DEFINIDO NA HORA - O ULTIMO VALOR É EXCLUSIVE 
+for i in range(0,5,'CADENCIA'): #PARA CADA NUMERO NESSA LISTA FAÇA
+    print(i)
 
+#LOOP DENTRO DO LOOP
+tp1 = (1,2,3,4,5)
+tp2 = (1,2,3)
 
+for i in tp1:
+    for z in tp2:
+        print(i*z)
+    print('----')
 
+#LOOP COM DUAS LISTAS - ELE FAZ UMA DE CADA VEZ SEPARADAMENTE
+lista1 = [10,16,24,39]
+lista2 = [32,89,47,76,12]
+soma = 0
 
+for lista in [lista1,lista2]:
+    for num in lista:
+        if num % 2 == 0:
+            soma += num #mesma coisa que soma = soma + num
 
+print ('A soma dos numeros pares das duas listas é igual a', soma)
 
+#LISTA DE LISTA = MATRIZES
 
+matriz = [[42,23,34], [100,215,114], [10.1,98.7,12.3]]
+maior_numero = 0
+
+for linha in matriz:
+    for num in linha:
+        if num > maior_numero:
+            maior_numero = num
+
+print("O mario numero dessa matriz é: ",maior_numero)
+            
+#LOOP COM DICIONARIO
+
+dict = {'k1':'Marcos', 'k2':'Lucas', 'k3':'Mario'}
+for item ind dict:
+    print (item) #POR PADRAO RETORNA A CHAVE
+
+#PARA RETORNAR OS DOIS
+
+dict = {'k1':'Marcos', 'k2':'Lucas', 'k3':'Mario'}
+for K,V in dict.items(): #ESSA FUNÇAO RETORNA OS 2, NECESSARIO 2 VAR PARA RECEBER
+    print (K,V)
+    
+#LOOP AGORA COM WHILE
+#TEM QUE GARANTIR QUE VAI SAIR DO LOOP SE NAO TRAVA TUDO
+valor = 0
+while valor < 10:
+    print(valor)
+    valor += 1
+
+#TAMBEM POSSUI O ELSE, APOS SAIR DO LOOP EXECUTA O COMANDO DO ELSE
+#INDEPENDENTE SE ENTRAR OU NAO NO LOOP, EXECUTA O ELSE APOS
+valor = 20
+while valor < 10:
+    print(valor)
+    valor += 1
+else:
+    print('Concluido') #OUTPUT 'Concluido'
+
+#BREAK FORÇA A INTERRUPÇAO DO LOOP
+valor = 0
+while valor < 10:
+    print(valor)
+    valor += 1
+    if valor == 5:
+        break #OUTPUT '0 1 2 3 4'
+        
+#PASS APENAS FORÇA A CONTINUAÇAO, DESCONSIDERANDO O CODIGO INCOMPLETO
+
+for i in range(10):
+    pass
+
+#CONTINUE APENAS IGNORA ALGUM ELEMENTO NO LOOP E CONTINUA NORMALMENTE (SOMENTE NO LOOP FOR)
+for i in range(10):
+    if i == 2:
+        continue
+    print(i)
+
+#WHILE E FOR JUNTOS PARA SABER QUAIS N DE 2 A 30 SAO PRIMOS
+
+primos = []
+
+for i in range(2,31):
+    primo = true
+    t = 2
+    while t <= i//2: #TESTA TODAS AS DIVISOES ENTRE 2 E METADO DE NUMERO (PRIMO)
+        if i % t == 0 #CASO SEJA DIVISIVEL POR ALGUM NUMERO NESSE INTERVALO (NAO E PRIMO)
+        primo = false #LOGO ATRIBUI FALSO, QUE E NECESSARIO PARA INSERIR NA LISTA
+        break
+    i += 1 
+    if primo:
+        primos.append(num)
+print (primos)
+
+#TENTANDO
+for i in range (2,31): #METODO MENOS PERFOMATICO POIS IMPRIME MULTIPLAS MENSAGENS
+    t = 2              #E TESTA TODOS OS VALORES SEM NECESSIDADE (MATEMATICA)
+    t2 = 1
+    
+    while t < i:
+        if i % t == 0:
+            t2 = 0
+            t += 1
+        else:
+            t += 1
+    
+    if t2 == 1:
+        print(f'O número {i} é primo')
+
+#FUNÇAO RANGE - range ('inicio','fim','passo') - VALOR FINAL EXCLUSIVE
+for i in range (0,20,2):
+    print(i) #OUTPUT 2, 4, 6, 8, 10, 12, 14, 16, 18
+
+#UTILIZANDO RANGE COM LISTA DE VALORES
+lista = ['Morango', 'Abacaxi', 'Mamao']
+x = len(lista) #PEGA QUANTOS VALORES TEM NO CONJUNTO
+for i in range(0,x): #ASSIM CONSEGUINDO O INDEX (CORRESPONDENCIA DE CADA VALOR)
+    print(lista[i]) #PRINTANDO CADA VALOR BASEADO NO INDEX
+
+#FUNÇOES EM PYTHON
+#CRIANDO UMA FUNÇÃO
+#SE CRIAR OUTRA FUNÇAO COM O MESMO NOME, SOBREPOE
+def funcaoteste():
+    print('Testando')
+
+#COM PARAMETRO AGORA
+def funcaoteste(nome):
+    x = nome
+    print(f'Alo {x}')
+
+#COM NUMERO INDETERMIADO DE PARAMETROS
+def funcaoteste(x, *y):
+    print(x)
+    for i in y:
+        print(i)
+
+funcaoteste(1,2,3,4,5,7,8)
 
 
 
