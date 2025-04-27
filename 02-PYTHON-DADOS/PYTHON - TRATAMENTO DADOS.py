@@ -163,6 +163,9 @@ max(lista)
 #RETORNANDO MENOR VALOR DA LISTA
 min(lista)
 
+#ENUMERATE - TRAZ INDICE E VALOR DA LISTA PARA O LOOP
+enumerate(lista)
+
 #ADICIONANDO VALOR COM APPEND
 #AO ADICIONAR MAIS DE UM ELE INSERE O CONJUNTO DE DADOS EM FORMA DE LISTA SEM DESEMPACOTAR
 lista.append(23)
@@ -350,7 +353,7 @@ print("O mario numero dessa matriz é: ",maior_numero)
 #LOOP COM DICIONARIO
 
 dict = {'k1':'Marcos', 'k2':'Lucas', 'k3':'Mario'}
-for item ind dict:
+for item in dict:
     print (item) #POR PADRAO RETORNA A CHAVE
 
 #PARA RETORNAR OS DOIS
@@ -514,4 +517,63 @@ print(dic_aluno_st)
 #PARA RETORNAR DADO BASEADO NOS VALORES DO DICIONARIO
 dic_aluno = {k:("Aprovado" if v >= 6 else "Reprovado") for k, v in dic_aluno_nota.items()}
 print (dic_aluno_st)
+
+#MANIPULAÇAO DE ARQUIVOS
+
+#ABRINDO ARQUIVO .TXT PARA LEITURA
+#PRIMEIRO SOMENTE ABRE ELE, NAO FAZ NADA
+var = open('caminho do arquivo','r' leitura) #leitura nao manipula o arquivo
+
+#AGORA LENDO O ARQUIVO
+#AO LER O ARQUIVO ELE PARA O CURSOR NO FINAL DO TEXTO, AO IMPRIMIR NOVAMENTE VEM VAZIO
+#SEM PARAMETRO LE TUDO, PARAMETRO INT PARA LER ATE X CARACTER, EXCLUSIVE
+print(var.read())
+
+#VOLTANDO O CURSOR PARA O INICIO
+#DIFERENTE DO INDEX, INICIA NO 1 MESMO
+var.seek(0,0) #coordenada do caracter para andar
+
+#CONTANDO O NUMERO DE CARACTERES
+print(var.tell())
+
+#ABRINDO COM 'W' WRITE
+#ELE CRIA O ARQUIVO, SE JA TIVER ELE SOPREPÕE O ARQUIVO JA CRIADO !!!!!!!!
+#NAO DA PARA LER NESSA FUNÇAO
+#TERIA QUE FECHAR O ARQUIVO E REABRIR NO MODO 'R' READ
+var = open('caminho do arquivo','w' escrita)
+var.close()
+var = open('caminho do arquivo','r')
+
+#PARA MANIPULAR UM JA EXISTENTE SE USA O PARAMETRO DE PERMISSAO 'a'
+var = open('caminho do arquivo','a')
+
+#FUNÇAO PARA GRAVAR ALGO
+#FUNCIONA O 'W' e no 'A' (ADICIONA NO FIM)
+var.write("str")
+
+#ABRINDO ARQUIVO .CSV
+#PARA READ É A MESMA FORMA PARA ABRIR
+
+#DIVIDINDO AS LINHAS - SOMENTE SEPARA CADA LINHA EM ITENS
+arq = open('caminho','r')
+tab = arq.read()
+linhas = linha.split('\n') #aqui separa em uma lista cada ENTER, transformando em valores
+
+#AGORA EM COLUNAS PARA VIABILIZAR LOCALIZAÇAO VIA INDEX DE CADA VALOR NA TABELA
+full_tab = []
+for linha in linhas:
+    split_linha = linhas.split(,)
+    full_tab.append()
+print(full_tab)
+
+#COM ISSO CADA LINHA SEPARADA POR LISTAS , E CADA VALOR (COLUNAS) POR ITENS DENTRO DESSAS LISTAS
+#EXEMPLO
+full_tab[1][2] #linha 1 e coluna 2
+
+
+
+
+
+
+
 
