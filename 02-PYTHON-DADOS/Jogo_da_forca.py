@@ -9,7 +9,7 @@ if ini == 'S':
     ltentativas = []
     tentativas = 0
 
-    print(ljogo)
+    print(' '.join(ljogo))
 
     while True:
         t = input("Escolha uma letra: ")
@@ -17,19 +17,19 @@ if ini == 'S':
             for i,p in enumerate(lpalavra):
                 if p == t:
                     ljogo[i] = t
-            print("Letra correta!")
             if lpalavra == ljogo:
-                print(f"Fim, de jogo! Vitória!")
+                v = ''.join(ljogo)
+                print(f"Parabéns, a palavra era {v}.")
                 break
-            print(ljogo)
+            print(' '.join(ljogo))
+            print(f'Tenativas: {ltentativas} \n')
         elif t not in lpalavra:
-            print("Letra fora da palavra!")
+            print(' '.join(ljogo))
             ltentativas.append(t)
-            print(ljogo)
             tentativas += 1
-            print(f'Letras ja tentadas: {ltentativas}')
+            print(f'Tentativas: {ltentativas} \n')
             if tentativas < 6:
-                print(f'Voce ainda possui {6 - tentativas} tentativas!')
+                print(f'Voce ainda possui {6 - tentativas} tentativas! \n')
             if tentativas == 6:
                 print("Derrota, fim de jogo!")
                 break
