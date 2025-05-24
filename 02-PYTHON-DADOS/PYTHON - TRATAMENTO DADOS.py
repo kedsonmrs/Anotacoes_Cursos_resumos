@@ -134,6 +134,7 @@ del lista[0]
 #EXEMPLO
 lista1[[1,2,3],[4,5,6],[7,8,9,10]]
 a = lista1[1]
+
 b = a[0]
 
 #AGORA SENDO DIRETO E MELHOR
@@ -306,10 +307,10 @@ else:
 
 #LOOPS
 #FOR IN X - COM UM GRUPO DE DADOS JA DEFINIDOS EM UMA LISTA/TUPLA
-tp = (2,3,4) 
+tp = (2,3,4)
 for i in tp: #PARA CADA NUMERO NESSA LISTA, FAÇA
     print(i)
-    
+
 #FOR IN RANGE - COM UM GRUPO DEFINIDO NA HORA - O ULTIMO VALOR É EXCLUSIVE 
 for i in range(0,5,'CADENCIA'): #PARA CADA NUMERO NESSA LISTA FAÇA
     print(i)
@@ -403,11 +404,12 @@ for i in range(2,31):
     t = 2
     while t <= i//2: #TESTA TODAS AS DIVISOES ENTRE 2 E METADO DE NUMERO (PRIMO)
         if i % t == 0 #CASO SEJA DIVISIVEL POR ALGUM NUMERO NESSE INTERVALO (NAO E PRIMO)
-        primo = false #LOGO ATRIBUI FALSO, QUE E NECESSARIO PARA INSERIR NA LISTA
-        break
-    i += 1 
+            primo = false #LOGO ATRIBUI FALSO, QUE E NECESSARIO PARA INSERIR NA LISTA
+            break
+        else:
+            t += 1
     if primo:
-        primos.append(num)
+        primos.append(i)
 print (primos)
 
 #TENTANDO
@@ -490,7 +492,7 @@ x = int(input('Digite sua idade: '))
 #PYPI.ORG - SITE COM PACOTES (CONJ DE FUNÇOES) PYTHON
 #RETURN EM UMA FUNÇAO DEVOLVE O VALOR PARA USO EM VARIAVEIS
 
-#FUNCAO LAMBDA
+#FUNCAO
 #RETORNA AUTOMATICO SEM RETURN
 #FUNÇAO SIMPLIFICADA / FUNÇOES MAIS RAPIDAS
 NOME_FUNC = lambda 'parametros': 'operaçao'
@@ -554,7 +556,7 @@ var.write("str")
 #DIVIDINDO AS LINHAS - SOMENTE SEPARA CADA LINHA EM ITENS DE UMA LISTA
 arq = open('caminho','r') #parametro NEWLINE, quebra a linha com o caracter definido (apenas LE OQ JA EXISTE)
 tab = arq.read()
-linhas = linha.split('\n') #aqui separa em uma lista cada ENTER, transformando em valores
+linhas = tab.split('\n') #aqui separa em uma lista cada ENTER, transformando em valores
                            #NAO FUNCIONA EM LISTAS
 
 #AGORA EM COLUNAS PARA VIABILIZAR LOCALIZAÇAO VIA INDEX DE CADA VALOR NA TABELA
@@ -640,9 +642,9 @@ with open('C:\\Users\\kedso\\Desktop\\CURSOS\\teste.csv','r') as arq:
     for x in reader:
         print(x)
     dados = list(reader)#TRANSFORMANDO O CONJUNTO DE LISTAS LIDAS EM UMA LISTA DE LISTAS
-    for i in dados[1:]: #AGORA IMPRIMINDO LINHA POR LINHA (LISTA)
+    for i in dados[1:] #AGORA IMPRIMINDO LINHA POR LINHA (LISTA)
         print(i)
- 
+
 #TRANSFORMANDO UM DICIONARIO PYTHON EM JSON (JSON NATURALMENTE É UM DICIONARIO)
 #E EXPORTANDO ELE PARA UM ARQUIVO EM DISCO
 import json as js
@@ -703,7 +705,7 @@ lista = list(map('funçao','iteravel'))
 print(lista)
 
 #UTILIZANDO EM CONJUNTO COM LAMBDA - PUXA OS VALORES DA LISTA PARA A OPERAÇAO
-lista1 = (lambda x:x+1,'lista')
+lista1 = map(lambda x:x+1,'outralista')
 print(lista1)
 
 #MAP TRATA MAIS DE UMA LISTA SE NECESSARIO
@@ -712,7 +714,7 @@ print(lista1)
  
 #FUNÇAO REDUCE() - REDUZ UMA LISTA A UM UNICO VALOR, SOMA, MAIOR, MENOR - FUNÇAO COM 2 PARAMETROS
 #RETORNA SEMPRE O X - ACUMULADOR
-res = reduce(lambda x, y:a + y,numeros,'inicial se necessario')
+res = reduce(lambda x, y:x + y,numeros,'inicial se necessario')
 print(res) #nesse caso retorna a soma de todos os numeros da lista
 
 #AGORA PARA VER MAIOR VALOR
@@ -796,4 +798,4 @@ re.findall(r'\w+!',txt) #palavras seguidas por '!'
 re.findall(r'esse\s(\w+)\samargo',txt) #palavra entre 'esse' e 'amargo 
                                        #uso de intervalo dever dar match EXATO
                                        #O PARENTESES SERVE PRA DEFINIR O QUE VOCER QUER PEGAR, FORA FICA O "INTERVALO"
-re.findall(r'\w+[á-úÁ-Ú]\b',txt)#\b MINUSCULO POIS ACENTUADO = \W e letra normal \w
+re.findall(r'\w+[á-úÁ-Ú]',txt)#\b MINUSCULO POIS ACENTUADO = \W e letra normal \w
