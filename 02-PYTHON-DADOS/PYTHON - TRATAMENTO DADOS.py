@@ -217,7 +217,7 @@ aluno_idade.keys()
 #TRAZENDO SOMENTE OS VALORES 
 aluno_idade.values()
 
-#TRAZENDO OS PARES EM FORMA DE ITEM UNITARIO
+#TRAZ VALO E CHAVE PARA MANIPULAÇAO
 aluno_idade.items()
 
 #FUNÇAO PARA PEGAR OS ITENS(PARES) DE UM DICIONARIO E ADICIONANDO EM OUTRA
@@ -389,7 +389,7 @@ while valor < 10:
 for i in range(10):
     pass
 
-#CONTINUE APENAS IGNORA ALGUM ELEMENTO NO LOOP E CONTINUA NORMALMENTE (SOMENTE NO LOOP FOR)
+#CONTINUE APENAS IGNORA O RESTO DO LOOP E VOLTA PARA O COMEÇO DO LOOP
 for i in range(10):
     if i == 2:
         continue
@@ -420,7 +420,7 @@ for i in range (2,31): #METODO MENOS PERFOMATICO POIS IMPRIME MULTIPLAS MENSAGEN
     while t < i:
         if i % t == 0:
             t2 = 0
-            t += 1
+            break
         else:
             t += 1
     
@@ -584,6 +584,8 @@ for columns in row1
 print(count)
 
 #FUNÇAO QUE JA TRAS LINHA A LINHA COMO LISTA, SEPARADO POR \N
+#INCLUI O \N NA STRING AO SEPARAR, SE USA O METODO .STRIP PARA REMOVER
+#OU SE USA O .SPLITLINES() NA STRING QUE JA RETIRA OS \N OU \R\N
 arq.readlines()
 
 #CODIGO ESCRITO POR MIM PRATICA
