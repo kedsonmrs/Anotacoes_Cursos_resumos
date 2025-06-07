@@ -10,8 +10,8 @@ while True:
         elif ini == 'S':    
             with open ('C:\\Users\\kedso\\Desktop\\forca\\palavras.txt','r') as arq:
                 palavras = arq.readlines()
-            p = r.choice(palavras).strip()
-            lpalavra = [i for i in p]
+            pa = r.choice(palavras).strip()
+            lpalavra = [i for i in pa]
             ljogo = ['_' for i in lpalavra]
             ltentativas = []
             tentativas = 0
@@ -39,7 +39,7 @@ while True:
                         print(f'Voce ainda possui {6 - tentativas} tentativas! \n')
                     if tentativas == 6:
                         print("Derrota, fim de jogo!\n")
-                        print(f"A palavra correta era {p}.")
+                        print(f"A palavra correta era {pa}.")
                         break
                     else:
                         True

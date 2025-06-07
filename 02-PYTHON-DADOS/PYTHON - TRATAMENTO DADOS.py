@@ -801,3 +801,44 @@ re.findall(r'esse\s(\w+)\samargo',txt) #palavra entre 'esse' e 'amargo
                                        #uso de intervalo dever dar match EXATO
                                        #O PARENTESES SERVE PRA DEFINIR O QUE VOCER QUER PEGAR, FORA FICA O "INTERVALO"
 re.findall(r'\w+[á-úÁ-Ú]',txt)#\b MINUSCULO POIS ACENTUADO = \W e letra normal \w
+
+#PROGRAMAÇAO ORIENTADA A OBJETOS
+#CRIANDO UMA CLASSE
+
+class Animal():
+    
+    VarAnimalEx = 10 #ESSE NAO DEPENDE DA INSTANCIA, DADO DA CLASSE
+                    #PARA USO SE COLOCAR Aluno.VarAlunoEx 
+    
+    def __init__(self,nome): #CONSTRUTOR RECEBE OS ATRIBUTOS DA INSTANCIA PARA APLICAR NOS METODOS ABAIXO
+                             #PARA CODAR DENTRO DA CLASSE SE USA O SELF.NOME
+                             #PARA ACESSAR FORA SE USA APENAS O NOME (Animal.nome)
+             
+    
+    def ApresentaAnimal(self): #CRIANDO UM METODO PARA USAR NOS OBJETOS DO TIPO ALUNO
+        print(f"Este animal é um {self.nome}!")
+
+#CRIANDO SUBCLASSE - HERDA TUDO DA CLASSE MAE ESPECIFICADA NO PARENTESES
+
+class Cachorro(Animal)
+
+    def __init__(self,nome,raça):
+        Animal.__init__(self,nome) #AQUI CRIA O VINCULO COM A CLASSE MAE HERDANDO PARAMETROS E ATRIBUTOS
+        
+    def ApresentaAnimal(self):
+        print("Oi eu sou um cachorro!")
+
+#MANIPULANDO OS ATRIBUTOS DE UM OBJETO
+
+#HASATTR RETORNA BOOLEANO SE HA OU NAO ATRIBUTO
+hasattr('objeto',atributo(nome dentro da classe))
+
+#SETATTR MUDA O ATRIBUTO
+setattr('objeto',atributo(nome dentro da classe), 'valor')
+
+#GETATTR RETORNA O VALOR DO ATRIBUTO
+getattr('objeto',atributo(nome dentro da classe))
+
+#DELATTR DELETA O VALOR DO ATRIBUTO
+delattr('objeto',atributo(nome dentro da classe))
+
