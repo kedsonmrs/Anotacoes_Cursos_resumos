@@ -22,9 +22,61 @@ class jogoForca(Jogos):
     def iniJogo(self):
         import random as r
         print('-- BEM VINDO AO JOGO DA FORCA --')
+        
+        self.estagio = ['''  +========+
+  |        |
+           |
+           |
+           |
+           |
+           |\n''',
+           '''  +========+
+  |        |
+  O        |
+           |
+           |
+           |
+           |\n''',
+           '''  +========+
+  |        |
+  O        |
+  |        |
+           |
+           |
+           |\n''',
+           '''  +========+
+  |        |
+  O        |
+  |/       |
+           |
+           |
+           |\n''',
+           '''  +========+
+  |        |
+  O        |
+ \\|/       |
+           |
+           |
+           |\n''',
+           '''  +========+
+  |        |
+  O        |
+ \\|/       |
+ /         |
+           |
+           |\n''',
+           '''  +========+
+  |        |
+  O        |
+ \\|/       |
+ / \\       |
+           |
+           |\n''']
+                                      
         while True:
+            print('')
             ini = input("Deseja iniciar o jogo? (S/N) ")
-
+            print('')
             if ini == 'S' or ini == 'N':
                 if ini == 'N':
                     print("Encerrando programa, obrigado!")
@@ -38,10 +90,11 @@ class jogoForca(Jogos):
                     ltentativas = []
                     tentativas = 0
 
-                    print(' '.join(ljogo))
+                    print(' '.join(ljogo),'\n')
 
                     while True:
                         t = input("Escolha uma letra: ")
+                        print("")
                         if t in lpalavra:
                             for i,p in enumerate(lpalavra):
                                 if p == t:
@@ -50,12 +103,14 @@ class jogoForca(Jogos):
                                 v = ''.join(ljogo)
                                 print(f"Parabéns, a palavra era {v}.")
                                 break
-                            print(' '.join(ljogo))
+                            print(self.estagio[tentativas])
+                            print('\n',' '.join(ljogo),'\n')
                             print(f'Tenativas: {ltentativas} \n')
                         elif t not in lpalavra:
-                            print(' '.join(ljogo))
+                            print(' '.join(ljogo),'\n')
                             ltentativas.append(t)
                             tentativas += 1
+                            print(self.estagio[tentativas])
                             print(f'Tentativas: {ltentativas} \n')
                             if tentativas < 6:
                                 print(f'Voce ainda possui {6 - tentativas} tentativas! \n')
@@ -78,8 +133,6 @@ class jogoCorrida(Jogos):
     def iniJogo(self):
         print("Jogo em construção!")
 
-jogos = [jogoCorrida(),jogoForca()]
+jogof = jogoForca()
 
-for jogo in jogos:
-    jogo.specsJogo()
-    jogo.creditsJogo()
+jogof.iniJogo()
