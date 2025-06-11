@@ -76,20 +76,20 @@ class jogoForca:
         with open ('C:\\Users\\kedso\\Desktop\\forca\\palavras.txt') as arq:
             palavras = arq.read().split()
             escolha = random.choice(palavras)
-            p = [x for x in escolha]
+            p = [x.upper() for x in escolha]
             return p
         
     def atualizaP(self):
         
-        letra = input("Escolha uma letra:\n")
         print (self.estagio[self.cont])
+        letra = input("Escolha uma letra:").upper()
         if letra in self.palavra:
             for i, l in enumerate(self.palavra):
                 if l == letra:
                     self.palavraV[i] = l
         elif letra not in self.palavra:
             self.cont += 1
-        print (self.palavraV,"\n") 
+        print ("\n",''.join(self.palavraV),"\n")
         
     def encJogo(self):
         if self.palavraV == self.palavra:
