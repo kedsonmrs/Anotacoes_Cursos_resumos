@@ -804,29 +804,31 @@ re.findall(r'\w+[á-úÁ-Ú]',txt)#\b MINUSCULO POIS ACENTUADO = \W e letra norm
 
 #PROGRAMAÇAO ORIENTADA A OBJETOS
 #CRIANDO UMA CLASSE
+#PARA SOBREESCREVER UM ATRIBUTO PODE DEFINIR DIRETO SEM PARAMETRO, OU PASSANDO PARAMETRO PARA A MAE AO DAR INIT NA SUBCLASSE
 
 class Animal():
     
     VarAnimalEx = 10 #ESSE NAO DEPENDE DA INSTANCIA, DADO DA CLASSE
-                    #PARA USO SE COLOCAR Aluno.VarAlunoEx 
+                     #PARA USO SE COLOCAR Aluno.VarAlunoEx 
     
-    def __init__(self,nome): #CONSTRUTOR RECEBE OS ATRIBUTOS DA INSTANCIA PARA APLICAR NOS METODOS ABAIXO
-                             #PARA CODAR DENTRO DA CLASSE SE USA O SELF.NOME
-                             #PARA ACESSAR FORA SE USA APENAS O NOME (Animal.nome)
+    def __init__(self,animal):#CONSTRUTOR RECEBE OS ATRIBUTOS DA INSTANCIA PARA APLICAR NOS METODOS ABAIXO
+        self.animal = animal  #PARA CODAR DENTRO DA CLASSE SE USA O SELF.NOME
+                              #PARA ACESSAR FORA SE USA APENAS O NOME (Animal.nome)
              
-    
     def ApresentaAnimal(self): #CRIANDO UM METODO PARA USAR NOS OBJETOS DO TIPO ALUNO
-        print(f"Este animal é um {self.nome}!")
+        print(f"Este animal é um {self.animal}!")
 
 #CRIANDO SUBCLASSE - HERDA TUDO DA CLASSE MAE ESPECIFICADA NO PARENTESES
 
-class Cachorro(Animal)
+class Cachorro(Animal):
 
     def __init__(self,nome,raça):
-        Animal.__init__(self,nome) #AQUI CRIA O VINCULO COM A CLASSE MAE HERDANDO PARAMETROS E ATRIBUTOS
+        Animal.__init__(self,'Cahorro') #AQUI CRIA O VINCULO COM A CLASSE MAE HERDANDO PARAMETROS E ATRIBUTOS
+                                        #AO INICIAR MAE COM PARAMETRO, DEVE SE PASSAR O PARAMETRO NO INIT
         
-    def ApresentaAnimal(self):
-        print("Oi eu sou um cachorro!")
+x = Cachorro('Boly','Beagle')
+
+x.ApresentaAnimal()
 
 #MANIPULANDO OS ATRIBUTOS DE UM OBJETO
 
@@ -841,4 +843,158 @@ getattr('objeto',atributo(nome dentro da classe))
 
 #DELATTR DELETA O VALOR DO ATRIBUTO
 delattr('objeto',atributo(nome dentro da classe))
+
+#POLIMORFISMO SIGNIFICA SOBRESCREVER UM METODO VINDO DA CLASSE MAE AFIM DE PADRONIZAR, OU SEJA O MESMO NOME MAS COMPORTAMENTO DIFERENTE
+
+#SE CRIAR SUBCLASSE SEM INIT, ELA CARREGA TUDO DA MAE AUTOMATICAMENTE SEM INIT
+
+#DA PRA FAZER UM LOOP PARA APLICAR FUNÇOES OU ACESSAR ATRIBUTOS DE INSTANCIAS
+
+x = [Cachorro('Meg','Beagle'),Gato('Suc','Siames')]
+
+for i in x:
+    i.ApresentaAnimal()
+    print('----')
+    
+#PACOTE NUMPY
+
+import numpy as np
+
+#CRIANDO UMA ARRAY DO NUMPY (LISTA OTIMIZADA)
+#FUNCIONA COM LISTA ANINHADA
+
+arr1 = np.array([1,2,3,4,5])
+
+#BUSCANDO INDICES NUMA ARRAY NUMPY
+
+ind = [1,2,5,6]
+arr1[ind]
+
+#DIFERENTE DA LISTA COMUM, UMA NPARRAY APLICA OPERAÇAO DIRETA EM CADA ITEM
+
+x = (arr1 * 2) #RETORNA OUTRA NPARRAY OPERADA
+
+#MASCARA BOOLEANA NUMA NPARRAY
+
+mask = (arr1 % 2 == 0) #RETORNA TESTES BOOLEANOS PARA NUMEROS PARES
+                       #SE UTILIZAR MASK COMO INDEX "arr[mask]" RETORNA SOMENTE OS TRUES
+print(arr1[mask])      #SERVE TAMBEM PARA ATRIUIR ONDE FOR TRUE "arr1[mask] = 2"
+
+#APESAR DE FLEXIVEL, NAO ACEITA OUTROS TIPOS NUMA MESMA NPLISTA
+
+#FUNÇAO RANGE DO NP JA CRIA A LISTA COMO NPARRAY DIRETO
+arr1 = np.arange(1,50 + 1,5) #NP ACEITA ANOTAÇAO +1 PRA INCLUIR O ULTIMO
+
+#FUNÇAO QUE MOSTRA A DIMENSAO DA ARRAY (1D, 2D, 3D)
+np.shape(arr1) #lista commum = 1d - logo vem apenas (x) que é o numero de elementos
+               #lista de lista = 2d - logo vem (x,y)
+
+#FUNÇAO NP.EYE CRIA UMA MATRIZ COM NUMEROS 1 DESENHANDO DIAGONAL
+#NP.EYE('LINHA','COLUNA')
+
+print(np.eye(4)) #OUTPUT [[1. 0. 0. 0.]
+                 #        [0. 1. 0. 0.]
+                 #        [0. 0. 1. 0.]
+                 #        [0. 0. 0. 1.]]
+
+#FUNÇAO PARA CRIAR MATRIZ COM A DIAGONAL DEFINIDA
+#PARAMETRO DEVE SER UMA LISTA (NPARRAY OU ARRAY COMUM)
+
+print(np.diag(np.array([1,2,3,4])) #OUTPUT [[1 0 0 0]
+                                   #        [0 2 0 0]
+                                   #        [0 0 3 0]
+                                   #        [0 0 0 4]]
+
+#A NPARRAY PODE SER DE VARIOS TIPOS (SEM MISTURAR!!!!)
+arr1 = ([True,False,True,True,False]) #BOOLEANO
+arr1 = (['MARIO','LUCAS','MARCOS','THIAGO']) #STRINGS
+
+#CRIANDO MATRIZ SO DE '1'
+arr1 = np.ones((2,3)) #('linhas,colunas')
+
+#CRIANDO MATRIZ A PARTIR DE LISTA NORMAL (OUTRO OBJETO) = METODOS DIFERENTES
+arr1 = np.matrix([[1,2,3],[4,5,6],[7,8,9]])
+type(arr1) #OUTPUT np.matrix
+
+#ARR.SIZE - RETORNA NUMERO DE ELEMENTOS
+arr1.size #FUNCIONA IGUAL O SHAPE EM UMA MATRIZ D1
+
+#INDEXIZAÇAO DE MATRIZ
+arr1['linha','coluna'] #OBS: PODE SE USAR INTERVALO EM LINHA OU COLUNA PARA RETORNAR MAIS DE 1 VALOR
+                       #SE OMITIR ELE CONTA COMO TODAS
+
+#ALTERANDO VALOR DENTRO DA MATRIZ
+arr1[0,0] = 2
+
+#DA PARA ESPECIFICAR O TIPO DO DADO NA ARRAY
+arr1 = np.array([1,2,3], dtype = np.float64) 
+
+#SABENDO O TAMANHO (BYTES) DAS MATRIZES
+
+arr1.itemsize #TAMANHO DE CADA VALOR NA MATRIZ
+arr1.nbytes #TAMANHO DA MATRIZ TOTAL
+arr1.ndim #DIMENSAO DA MATRIZ (GERALMENTE 2D , LxC)
+
+#ARRAY 3D - NADA MAIS É QUE LISTA DE MATRIZES
+#SE USAR O SHAPE FICA ('N DE MATRIZES','LINHA','COLUNAS')
+
+arr1 = np.array([[[1,2,3],[4,5,6]],
+                 [[7,8,9],[10,11,12]]])
+
+#PRA ACESSAR VALOR SE USA TRIPLA INDEXIZAÇAO
+
+arr1[1,2,2] #matriz, linha, coluna
+
+x = np.array([[[1,2,3,4],[1,2,3,4]],[[1,2,3,4],[1,2,3,4]]])
+
+#FUNÇAO DO NP PARA CARREGAR OS DADOS DE UM CSV E JA TRASNFORMAR EM MATRIZES
+#METODO UNPACK NO LOADTXT - VARIAVEL = N DE COLUNAS - SEPARA AS COLUNAS EM LISTAS SEPARADAS
+
+arr1 = np.loadtxt('var com arquivo',delimiter = 'delimitador',usecols = 'quais colunas',skiprows = 'pular linhas')
+
+#NUMPY ESTATISTICAS
+np.mean(arr1) #MEDIA
+np.std(arr1) #DESVIO PADRAO - MEDIA DE DISPERÇAO DA MEDIA (VALOR CENTRAL)
+
+#FUNÇOES NP
+np.sum(arr1) #SOMA
+np.prod(arr1) #MULTIPLICAÇAO
+
+#PARA MULTIPLICAR MATRIZ O NUMERO DE COLUNAS DA PRIMEIRA DEVE SER IGUAL AO NUMERO DE LINHAS DA SEGUNDA
+np.dot(arr1,arr2)
+arr1 = arr2 @ arr3
+
+#PEGANDO VALORES NUMA MATRIZ
+#PARA PEGAR DETERMINADA COLUNA
+arr1[:,2]
+
+#PARA PEGAR TODA A LINHA
+arr1[1]
+
+#PARA PEGAR MAIS DE UM VALOR EM UMA LINHA
+arr1[2,9,3] #[inicio,fim,salto] - IGUAL AO RANGE
+
+#PARA RETORNAR ARRAY DE BOOLEANO (COMPARA ITEM A ITEM)
+x = arr1 == arr2
+
+#PARA COMPARAR ARRAY INTEIRA - BOOLEANO
+np´.array_equal(arr1,arr2)
+
+#VALOR MAXIMO \ MINIMO
+arr1.max()
+arr1.min()
+
+#PARA ARREDONDAR CADA VALOR FLOAT DA ARRAY
+np.around(arr1)
+
+#PARA TRANSFORMAR A MATRIZ EM UMA LISTRA UNICA 1D , CONCATECA AS LINHAS
+np.flatten(arr1) #RETORNA UMA LISTA APENAS
+
+#PARA REPETIR VALORES NUMA LISTA
+arr1 = [1,2,3]
+np.repeat(arr1,3) #OUTPUT - [1,1,1,2,2,2,3,3,3] REPETA CADA VALOR
+np.tile(arr1,3) #OUTPUT - [1,2,3,1,2,3,1,2,3] REPETE TUDO TRES VEZES
+
+#COPIANDO UM ARRAY 
+np.copy(arr1)
 
