@@ -948,7 +948,7 @@ arr1[1,2,2] #matriz, linha, coluna
 x = np.array([[[1,2,3,4],[1,2,3,4]],[[1,2,3,4],[1,2,3,4]]])
 
 #FUNÇAO DO NP PARA CARREGAR OS DADOS DE UM CSV E JA TRASNFORMAR EM MATRIZES
-#METODO UNPACK NO LOADTXT - VARIAVEL = N DE COLUNAS - SEPARA AS COLUNAS EM LISTAS SEPARADAS
+#PARAMETRO UNPACK NO LOADTXT - VARIAVEL = N DE COLUNAS - SEPARA AS COLUNAS EM LISTAS SEPARADAS
 
 arr1 = np.loadtxt('var com arquivo',delimiter = 'delimitador',usecols = 'quais colunas',skiprows = 'pular linhas')
 
