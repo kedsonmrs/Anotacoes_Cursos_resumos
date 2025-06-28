@@ -39,31 +39,91 @@ ENCONTRO /* COM DIGRAFO NAO HÁ NENHUM TIPO DE ENCONTRO */
 				OBS /* NUNCA SERA HIATO */
 		TRITONGO - /* SEMIVOGAL + VOGAL + SEMIVOGAL */
 		HIATO - /* DUAS VOGAIS SEPARADAS NA SILABA SENDO ADJACENTE */
+ 
+ACENTUAÇÃO GRAFICA
 
-/* EXERCICIO */
-	na-vi-o = hiato  X
-	he-roi-co = dit dec
-	u-ru-guai = trit 
-	lu-a = hiato  X
-	tran-qui-lo = dit cresc / an
-	al-co-ol = hiato X 
-	ge-nio = dit cresc
-	quais = trit
-	noi-te = dit dec
-	ra-iz = hiato 
-	ir-mao = dit dec
-	pai = dit dec
-	céu = dit dec 
-	qual = dit cresc 
-	pão = dit dec 
-	sé-rie = dit cresc 
-	fui = dit dec
-	his-to-ria = dit cresc 
-	quei-jo = qu / dit dec
-	se-nhor = nh
-	pei-xe = dit dec 
-	ca-dei-ra = dit dec 
-	en-xur-ra-da = en / rr X
-	que-bran-to = qu / an 
-	ju-iz = hiato 
+	SILABA TONICA /* SILABA MAIS FORTE */
 
+	OXÍTONA /* ULTIMA SILABA É A FORTE */
+	ACENTUAÇÃO /* TERMINADOS EM  O, E, A (S), OI, EU, EI */
+
+	PAROXITONA /* PENULTIMA SILABA É A FORTE */
+	ACENTUAÇÃO /* NAO TERMINADOS EM  O, E, A, EM (S) */
+	  /* TERMINADO EM DITONGO */
+
+	PROPAROXITONA /* ANTEPENULTIMA SILABA É A FORTE */
+	ACENTUAÇÃO /* TODAS */
+
+	ACENTUAÇÃO MONOSSÍLABAS TÔNICAS /* TERMINADOS EM  O, E, A (S), OI, EU, EI */
+
+	HIATO /* I OU U TONICO SENDO SEGUNDA VOGAL DO HIATO, COM OU SEM (S) */
+
+	TER/VIR /* DERIVADOS NA TERCEIRA PESSOA DO PLURAL */
+
+	POR/PÔR /* PREPOSIÇAO/VERBO */
+
+	PODE/PÔDE /* PRESENTE/PASSADO */
+
+/* CLASSES DE PALAVRAS */
+
+VARIAVEIS /* SUBSTANTIVOS, ADJETIVOS, PRONOMES, NUMERAIS, VERBOS */
+	/* PODEM FLEXIONAR EM NUMERO E EM GENERO */
+
+	SUBSTANTIVOS /* NOME - PODE VIR ANTECEDIDO POR ARTIGO (o carro / carro) */ 
+				/* ARTIGOS PODE SUBSTANTIVAR OUTRAS CLASSES TRANSFORMANDO EM SUBS */
+				/* VER TIPOS RAPIDINHO (MAIS FACIL) */
+				
+	ADJETIVO /* REFERE-SE SEMPRE A SUBSTANTIVO (inteligente) */
+		/* LOC ADJETIVA - O MESMO POREM COM MAIS DE UMA PALAVRA (de inteligencia), INVARIAVEL */
+
+	PRONOME /* SUBSTITUI O NOME ou ACOMPANHA O NOME */
+		PRO ADJETIVO /* ACOMPANHA O NOME - (MEU ALUNO)*/
+		PRO SUBSTANTIVO /* SUBSTITUI O NOME (VEM SO) - (ALGUEM CHEGOU)*/
+		/* PRONOMES INDEFINIDOS SAO INVARIAVEIS */
+		
+	NUMERAIS /* QUANTIFICAM, ORDENAM ETC */
+		NUMERAL SUBS /* SUBSTITUI O SUBSTANTIVO AGE COMO SUJEITO (OS DOIS SAO BONITOS) */
+		NUMERAL ADJ /* ACOMPANHA O SUJEITO/SUBSTANTIVO (OS DOIS MENINOS SAO FEIOS) */
+
+	VERBOS - /* AÇAO, ESTADO, FENOMENO */
+
+INVARIAVEIS /* ADVERBIOS, CONJUNÇOES, PREPOSIÇOES */
+	/* NAO FLEXIONAM EM NUMERO NEM EM GENERO */
+
+	ADVERBIO /* REFERE-SE A ADJ/VERBO/ADV */
+			/*INDICA CIRCUNSTANCIAS (TEMPO, LUGAR, INTENSIDADE ...)
+			/* LOC ADVERBIAL - MAIS DE UMA PALAVRA INDICANDO CIRCUNSTACIA */
+			/* 'TODO' - EXCEÇAO DE ADVERBIO QUE VARIA MAS PODE USAR O INVARIAVEL (TODA MOLHADA)*/
+
+			| **Circunstância** | **Pergunta que responde** | **Exemplos de advérbios**              | **Exemplo na frase**         |
+			| ----------------- | ------------------------- | -------------------------------------- | ---------------------------- |
+			| **Lugar**         | Onde?                     | aqui, ali, lá, dentro, fora, acima     | Ele está **aqui**.           |
+			| **Tempo**         | Quando?                   | hoje, ontem, já, agora, depois, sempre | Chegou **ontem**.            |
+			| **Modo**          | Como?                     | bem, mal, devagar, rapidamente, assim  | Ele correu **rapidamente**.  |
+			| **Intensidade**   | Quanto? / Em que grau?    | muito, pouco, bastante, demais, tão    | Ela está **muito** cansada.  |
+			| **Negação**       | (nega uma ação)           | não, nunca, jamais                     | Ele **não** foi ao cinema.   |
+			| **Afirmação**     | (confirma uma ação)       | sim, certamente, realmente             | **Sim**, ele aceitou.        |
+			| **Dúvida**        | (expressa incerteza)      | talvez, quiçá, provavelmente           | **Talvez** ele viaje amanhã. |
+			
+	CONJUNÇOES /* CONECTOR - LIGA ORAÇOES (ELE CHEGOU E DORMIU) */
+				/* LIGA TERMOS TAMBEM (JOSE E JOAO) */
+				/* LOC CONJUNTIVA - 1 OU MAIS PALAVRA COM VALOR DE CONJUNÇAO (ASSIM QUE CHEGOU...) */
+					/* ASSIM QUE, LOGO QUE, AINDA QUE */
+			
+			| Circunstância (sentido)  | Conjunções que indicam isso  | Exemplo                                     |
+			| ------------------------ | ---------------------------- | ------------------------------------------- |
+			| **Causa**                | porque, pois, já que, como   | Não fui, **porque** estava cansado.         |
+			| **Consequência**         | então, de modo que, por isso | Estudou muito, **por isso** passou.         |
+			| **Condição**             | se, caso, desde que          | **Se** chover, não sairemos.                |
+			| **Tempo**                | quando, enquanto, assim que  | **Quando** cheguei, ele já havia saído.     |
+			| **Concessão (oposição)** | embora, mesmo que, ainda que | **Embora** chova, vamos sair.               |
+			| **Finalidade**           | para que, a fim de que       | Estudou **para que** passasse no concurso.  |
+			| **Comparação**           | como, tal qual, assim como   | Ela corre **como** uma atleta profissional. |
+			| **Adição**               | e, nem, também               | Gosto de café **e** chá.                    |
+			| **Alternância**          | ou, ora... ora, quer... quer | **Ou** estuda, **ou** não passa.            |
+
+	PREPOSIÇOES /* TABEM LIGAM TERMOS OU ORAÇOES */
+				/* BIZU : NORMALMENTE ESTAO RELACIONADAS A REGENCIA VERBAL, O VERBO 'PEDE' */
+				/* BIZU 2: QUANDO NAO HA VERBO, SE QUALIFICAR, CLASSIFICA OU COMPLETA E É DEPENDENTE DA ANTERIOR */
+				/* BIZU 3: NAO SE ENCAIXA EM NENHUMA CIRCUNSTANCIA ANTERIOR */
+				/* LOC PREPOSITIVA - MAIS DE UMA PALAVRA FUNCIONANDO COMO PREP */		
