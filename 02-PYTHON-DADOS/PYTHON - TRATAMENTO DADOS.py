@@ -211,13 +211,13 @@ del aluno_idade
 #A FUNÇAO LEN TRAZ O NUMERO DE PARES (VALORES COM RESPECTIVAS CHAVES)
 len(aluno_idade)
 
-#TRAZENDO SOMENTE AS CHAVES
+#TRAZENDO SOMENTE AS CHAVES (RETORNA LISTA)
 aluno_idade.keys()
 
-#TRAZENDO SOMENTE OS VALORES 
+#TRAZENDO SOMENTE OS VALORES (RETORNA LISTA)
 aluno_idade.values()
 
-#TRAZ VALO E CHAVE PARA MANIPULAÇAO
+#TRAZ VALOR E CHAVE PARA MANIPULAÇAO (RETORNA LISTA DE TUPLAS)
 aluno_idade.items()
 
 #FUNÇAO PARA PEGAR OS ITENS(PARES) DE UM DICIONARIO E ADICIONANDO EM OUTRA
@@ -506,7 +506,7 @@ print(lista)                   #SEGUNDO X É O PONTEIRO, ITERADOR
 #MANIPULANDO VALOR ARMAZENADO
 lista = [('me5' if x < 5 else 'ma=5') for x in range(11)] 
 print(lista) #O FILTRO APOS TUDO FILTRA O QUE VAI SER ARMAZENADO        
-             #O ANTERIOR MODIFICA O DADO BASEADO NA CONDIÇAO DO DADO ARMAZENADO
+             #O ANTERIOR INSERE O PROPRIO ITERADO OU ALGO BASEADO NO DADO ITERADO
 
 #AGORA COM DICIONARIO
 #UTILIZA A FUNÇAO .items() PARA TRAZER CHAVE E VALOR DO DICT
@@ -556,7 +556,7 @@ var.write("str")
 #DIVIDINDO AS LINHAS - SOMENTE SEPARA CADA LINHA EM ITENS DE UMA LISTA
 arq = open('caminho','r') #parametro NEWLINE, quebra a linha com o caracter definido (apenas LE OQ JA EXISTE)
 tab = arq.read()
-linhas = tab.split('\n') #aqui separa em uma lista cada ENTER, transformando em valores
+linhas = tab.split('\n') #aqui separa em uma lista cujo cada enter vira um valor
                            #NAO FUNCIONA EM LISTAS
 
 #AGORA EM COLUNAS PARA VIABILIZAR LOCALIZAÇAO VIA INDEX DE CADA VALOR NA TABELA
@@ -815,7 +815,7 @@ class Animal():
         self.animal = animal  #PARA CODAR DENTRO DA CLASSE SE USA O SELF.NOME
                               #PARA ACESSAR FORA SE USA APENAS O NOME (Animal.nome)
              
-    def ApresentaAnimal(self): #CRIANDO UM METODO PARA USAR NOS OBJETOS DO TIPO ALUNO
+    def ApresentaAnimal(self): #CRIANDO UM METODO PARA USAR NOS OBJETOS DO TIPO ANIMAL
         print(f"Este animal é um {self.animal}!")
 
 #CRIANDO SUBCLASSE - HERDA TUDO DA CLASSE MAE ESPECIFICADA NO PARENTESES
@@ -972,13 +972,13 @@ arr1[:,2]
 arr1[1]
 
 #PARA PEGAR MAIS DE UM VALOR EM UMA LINHA
-arr1[2,9,3] #[inicio,fim,salto] - IGUAL AO RANGE
+arr1[1:2,9,3] #[linha,inicio:fim:salto] - IGUAL AO RANGE
 
 #PARA RETORNAR ARRAY DE BOOLEANO (COMPARA ITEM A ITEM)
 x = arr1 == arr2
 
 #PARA COMPARAR ARRAY INTEIRA - BOOLEANO
-np´.array_equal(arr1,arr2)
+np.array_equal(arr1,arr2)
 
 #VALOR MAXIMO \ MINIMO
 arr1.max()
