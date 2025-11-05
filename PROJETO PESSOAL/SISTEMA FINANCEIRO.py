@@ -3,6 +3,7 @@ import csv as csv
 def recebeDados():
     print('Preencha na seguinte ordem: data, tipo, valor')
 
+    
     dadosf = []
     x = str(input('Data (dd/mm/aaaa) :'))
     y = str(input('Tipo: '))
@@ -11,12 +12,15 @@ def recebeDados():
     dadosf.append(x)
     dadosf.append(y)
     dadosf.append(z)
+    
+    print(dadosf)
     return dadosf
 
-def insere(dataf,tipof,valorf):
-    writer = csv.writer(arquivo)
-    with open('C:\\Users\\kedso\\Desktop\\PROJETO_PESSOAL\\DOC.csv','a') as arquivo:
-        writer.writerow(dataf,tipof,valorf)
+def insere(dadosfi):
+
+    with open('C:\\Users\\kedso\\Desktop\\CURSOS\\Anotacoes_Cursos_resumos\\PROJETO PESSOAL\\DOC.csv','a',newline='') as arquivo:
+        writer = csv.writer(arquivo,delimiter=';')
+        writer.writerow(dadosfi)
 
     print('Gasto adicionado.')
 
@@ -32,13 +36,14 @@ def validaContinuaçao():
         op2 = input('Deseja continuar? (S/N)')
         valiC = 0
         if op2 == 'S':
+            valiC = 1
+            return valiC
             break
         elif op2 == 'N':
             print('Finalizando programa.')
+            valiC = 0
             return valiC
             break
-        else:
-            continue
 
 print('==== FINANCEIRO MARIO ====')
 
@@ -61,7 +66,7 @@ while vali == 1:
         insere(dados)
         print('Operação realizada com sucesso!')
         vali = validaContinuaçao()
-    
+
     elif op == 2:
         deleta()
         print('Operação realizada com sucesso!')
