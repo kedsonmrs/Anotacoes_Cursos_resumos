@@ -10,7 +10,7 @@ class Gasto():
 class SistemaFinanceiro():
 
     def __init__(self):
-        self.gasto = []
+        self.gastos = []
     
     def salvaGasto(self):
         
@@ -19,27 +19,51 @@ class SistemaFinanceiro():
         valor = float(input('Valor: '))
 
         novo_gasto = Gasto(data,tipo,valor)
-        self.gasto.append(novo_gasto.data)
-        self.gasto.append(novo_gasto.tipo)
-        self.gasto.append(novo_gasto.valor)
+        self.gastos.append(novo_gasto.data)
+        self.gastos.append(novo_gasto.tipo)
+        self.gastos.append(novo_gasto.valor)
 
         with open("C:\\Users\\Kedson\\Desktop\\Anotacoes_Cursos_resumos\\PROJETO PESSOAL\\DOC.csv",'a',newline='') as arquivo:
             writer = csv.writer(arquivo,delimiter=';')
             writer.writerow(self.gasto)
 
-    def deletaGasto():
-        pass
-
-    def verGastos():
-        pass
+    def deletaGasto(self):
         
+        while True:
+            opcao_deletar = int(input("1. Deletar tudo\n2. Deletar registro\nSelecione uma opção: "))
+            
+            if opcao_deletar == 1:
+                with open("C:\\Users\\Kedson\\Desktop\\Anotacoes_Cursos_resumos\\PROJETO PESSOAL\\DOC.csv",'w',newline='') as arquivo:
+                    pass
+                print('Todos os registros deletados.')
+                break
+            
+            elif opcao_deletar == 2:
+                with open("C:\\Users\\Kedson\\Desktop\\Anotacoes_Cursos_resumos\\PROJETO PESSOAL\\DOC.csv",'r',newline='') as arquivo:
+                    reader = csv.reader(arquivo)
+                    for i in reader:
+                        self.gastos.append(i)
+                    print(self.gastos)
+                break
+            
+            else:
+                print('Opçao inválida, tente novamente.')
+                continue
+
+    def verGastos(self):
+        
+        with open("C:\\Users\\Kedson\\Desktop\\Anotacoes_Cursos_resumos\\PROJETO PESSOAL\\DOC.csv",'r',newline='') as arquivo:
+            reader = csv.reader(arquivo)
+            for i in reader:
+                print(i)
+                    
     def validaContinuaçao(self):
     
         while True:
-            op2 = input('Deseja continuar? (S/N)')
-            if op2 == 'S':
+            opcao_continua = input('Deseja continuar? (S/N)')
+            if opcao_continua == 'S':
                 return True
-            elif op2 == 'N':
+            elif opcao_continua == 'N':
                 print('Finalizando programa.')
                 return False
 
@@ -59,15 +83,20 @@ while continua:
     print('3 - Ver gastos')
     print('4 - Sair')
 
-    op = int(input('Selecione uma opção:'))
-    if op == 1:
+    opcao = int(input('Selecione uma opção:'))
+    if opcao == 1:
         sistema.salvaGasto()
         continua = sistema.validaContinuaçao()
-    elif op == 2:
-        pass
-    elif op == 3:
-        pass
-    elif op == 4:
+    
+    elif opcao == 2:
+        sistema.deletaGasto()
+        continua = sistema.validaContinuaçao()
+    
+    elif opcao == 3:
+        sistema.verGastos()
+        continua = sistema.validaContinuaçao()
+    
+    elif opcao == 4:
         print('Finalizando programa.')
         break
     
