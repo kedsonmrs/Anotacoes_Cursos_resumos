@@ -18,14 +18,22 @@ class SistemaFinanceiro():
         tipo = str(input('Tipo: '))
         valor = float(input('Valor: '))
 
-        novo_gasto = Gasto(data,tipo,valor)
-        self.gastos.append(novo_gasto.data)
-        self.gastos.append(novo_gasto.tipo)
-        self.gastos.append(novo_gasto.valor)
+        while True:
 
-        with open("C:\\Users\\Kedson\\Desktop\\Anotacoes_Cursos_resumos\\PROJETO PESSOAL\\DOC.csv",'a',newline='') as arquivo:
+            if not self.gastos:
+                novo_gasto = Gasto(data,tipo,valor)
+                self.gastos.append(novo_gasto.data)
+                self.gastos.append(novo_gasto.tipo)
+                self.gastos.append(novo_gasto.valor)
+                break
+
+            elif self.gastos:
+                del self.gastos[0]
+                continue
+
+        with open("C:\\Users\\kedso\\Desktop\\CURSOS\\Anotacoes_Cursos_resumos\\PROJETO PESSOAL\\DOC.csv",'a',newline='') as arquivo:
             writer = csv.writer(arquivo,delimiter=';')
-            writer.writerow(self.gasto)
+            writer.writerow(self.gastos)
 
     def deletaGasto(self):
         
@@ -33,17 +41,39 @@ class SistemaFinanceiro():
             opcao_deletar = int(input("1. Deletar tudo\n2. Deletar registro\nSelecione uma opção: "))
             
             if opcao_deletar == 1:
-                with open("C:\\Users\\Kedson\\Desktop\\Anotacoes_Cursos_resumos\\PROJETO PESSOAL\\DOC.csv",'w',newline='') as arquivo:
+                with open("C:\\Users\\kedso\\Desktop\\CURSOS\\Anotacoes_Cursos_resumos\\PROJETO PESSOAL\\DOC.csv",'w',newline='') as arquivo:
                     pass
                 print('Todos os registros deletados.')
                 break
             
             elif opcao_deletar == 2:
-                with open("C:\\Users\\Kedson\\Desktop\\Anotacoes_Cursos_resumos\\PROJETO PESSOAL\\DOC.csv",'r',newline='') as arquivo:
+                with open("C:\\Users\\kedso\\Desktop\\CURSOS\\Anotacoes_Cursos_resumos\\PROJETO PESSOAL\\DOC.csv",'r',newline='') as arquivo:
                     reader = csv.reader(arquivo)
+                    
                     for i in reader:
                         self.gastos.append(i)
-                    print(self.gastos)
+                    
+                    contador_indices = 0
+                    print('Registros atuais:')
+                    
+                    for z in self.gastos:
+                        print (f'{contador_indices} - {z}\n')
+                        contador_indices += 1
+                    
+                    while True:
+                        opcao_indice = int(input('Selecione o índice do registro desejado: '))
+
+                        if  0 <= opcao_indice < len(self.gastos):
+                            del self.gastos[opcao_indice]
+                            with open("C:\\Users\\kedso\\Desktop\\CURSOS\\Anotacoes_Cursos_resumos\\PROJETO PESSOAL\\DOC.csv",'w',newline='') as arquivo:
+                                writer = csv.writer(arquivo, delimiter=';')
+                                writer.writerows(self.gastos)
+                            print('Registro deletado com sucesso.')
+                            break
+                        else:
+                            print("Indice inválido, tente novamente.")
+                            continue
+
                 break
             
             else:
@@ -52,7 +82,7 @@ class SistemaFinanceiro():
 
     def verGastos(self):
         
-        with open("C:\\Users\\Kedson\\Desktop\\Anotacoes_Cursos_resumos\\PROJETO PESSOAL\\DOC.csv",'r',newline='') as arquivo:
+        with open("C:\\Users\\kedso\\Desktop\\CURSOS\\Anotacoes_Cursos_resumos\\PROJETO PESSOAL\\DOC.csv",'r',newline='') as arquivo:
             reader = csv.reader(arquivo)
             for i in reader:
                 print(i)
