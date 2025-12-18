@@ -16,7 +16,6 @@ class Gasto():
         
         return gasto_lista
 
-
 class SistemaFinanceiro():
 
     def __init__(self):
@@ -60,11 +59,11 @@ class SistemaFinanceiro():
                     continua = self.validaContinuaçaoMenu()
                 
                 case 4:
-                    arq.selecionaArquivo()
+                    self.caminhoArquivo = arq.selecionaArquivo()
                     continua = self.validaContinuaçaoMenu()
 
                 case 5:
-                    arq.mostraArquivo()
+                    arq.mostraArquivo(self.caminhoArquivo)
                     continua = self.validaContinuaçaoMenu()
 
                 case 6:
@@ -76,12 +75,21 @@ class SistemaFinanceiro():
                     continue
      
     def salvaGastoCSV(self):
+        
+        with open(self.caminhoArquivo, 'r', newline='') as arquivo:
+            reader = csv.reader(arquivo,delimiter=';')
+            registros = list(reader)
+            
+            if not registros:
+                with open(self.caminhoArquivo, 'a', newline='') as arquivo:
+                    writer = csv.writer(arquivo, delimiter=';')
+                    writer.writerow(['Data','Tipo','Valor'])
+        
         data = str(input('Data (dd/mm/aaaa) :'))
         tipo = str(input('Tipo: '))
         valor = float(input('Valor: '))
 
         gasto = Gasto(data, tipo, valor)
-
 
         with open(self.caminhoArquivo, 'a', newline='') as arquivo:
             writer = csv.writer(arquivo, delimiter=';')
@@ -91,49 +99,48 @@ class SistemaFinanceiro():
 
         while True:
             opcao_deletar = int(input("1. Deletar tudo\n2. Deletar registro\nSelecione uma opção: "))
+            match opcao_deletar:
 
-            if opcao_deletar == 1:
-                with open(self.caminhoArquivo, 'w', newline='') as arquivo:
-                    pass
-                print('Todos os registros deletados.')
-                break
+                case 1:
+                    with open(self.caminhoArquivo, 'w', newline='') as arquivo:
+                        pass
+                    print('Todos os registros deletados.')
+                    break
 
-            elif opcao_deletar == 2:
-                with open(self.caminhoArquivo, 'r', newline='') as arquivo:
-                    reader = csv.reader(arquivo,delimiter=';')
-                    gastos_arquivo_lista = []
-                    for i in reader:
-                        gastos_arquivo_lista.append(i)
+                case 2:
+                    with open(self.caminhoArquivo, 'r', newline='') as arquivo:
+                        reader = csv.reader(arquivo,delimiter=';')
+                        gastos_arquivo_lista = []
+                        for i in reader:
+                            gastos_arquivo_lista.append(i)
 
-                    contador_indices = 0
-                    print('Registros atuais:')
+                        contador_indices = 0
+                        print('Registros atuais:')
 
-                    for z in gastos_arquivo_lista:
-                        print(f'{contador_indices} - {z}\n')
-                        contador_indices += 1
+                        for z in gastos_arquivo_lista:
+                            print(f'{contador_indices} - {z}\n')
+                            contador_indices += 1
 
-                    while True:
-                        opcao_indice = int(input('Selecione o índice do registro desejado: '))
+                        while True:
+                            opcao_indice = int(input('Selecione o índice do registro desejado: '))
 
-                        if 0 <= opcao_indice < len(gastos_arquivo_lista):
-                            del gastos_arquivo_lista[opcao_indice]
+                            if 0 <= opcao_indice < len(gastos_arquivo_lista):
+                                del gastos_arquivo_lista[opcao_indice]
 
-                            with open(self.caminhoArquivo, 'w', newline='') as arquivo:
-                                writer = csv.writer(arquivo, delimiter=';')
-                                writer.writerows(gastos_arquivo_lista)
+                                with open(self.caminhoArquivo, 'w', newline='') as arquivo:
+                                    writer = csv.writer(arquivo, delimiter=';')
+                                    writer.writerows(gastos_arquivo_lista)
 
-                            del gastos_arquivo_lista
-                            print('Registro deletado com sucesso.')
-                            break
-                        else:
-                            print("Indice inválido, tente novamente.")
-                            continue
+                                del gastos_arquivo_lista
+                                print('Registro deletado com sucesso.')
+                                break
+                            else:
+                                print("Indice inválido, tente novamente.")
+                                continue
 
-                break
-
-            else:
-                print('Opçao inválida, tente novamente.')
-                continue
+                case _:    
+                    print('Opçao inválida, tente novamente.')
+                    continue
 
     def validaContinuaçaoMenu(self):
         while True:
@@ -159,8 +166,8 @@ class Arquivo():
         root.withdraw()
         return filedialog.askopenfilename(title="Selecione o arquivo:",filetypes=[("Arquivo CSV","*.csv")])
     
-    def mostraArquivo(self):
-        print(sistema.caminhoArquivo)
+    def mostraArquivo(self,caminho):
+        print(caminho)
 
 sistema = SistemaFinanceiro()
 
