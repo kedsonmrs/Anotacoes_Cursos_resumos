@@ -2,6 +2,7 @@ import csv
 import os
 import tkinter as tk
 from tkinter import filedialog
+import pandas as pd
 
 class Gasto():
 
@@ -39,29 +40,40 @@ class SistemaFinanceiro():
             print('1 - Adicionar gasto')
             print('2 - Remover gasto')
             print('3 - Ver gastos')
-            print('4 - Sair')
-        
+            print('4 - Modificar arquivo')
+            print('5 - Mostrar arquivo')
+            print('6 - Sair')
+
             opcao = int(input('Selecione uma opção:'))
-
-            if opcao == 1:
-                self.salvaGastoCSV()
-                continua = self.validaContinuaçaoMenu()
-
-            elif opcao == 2:
-                self.deletaGastoCSV()
-                continua = self.validaContinuaçaoMenu()
-
-            elif opcao == 3:
-                self.apresentaGastosCSV()
-                continua = self.validaContinuaçaoMenu()
+            match opcao:
             
-            elif opcao == 4:
-                print('Finalizando programa.')
-                break
-            
-            else:
-                print('Opção inválida, tente novamente.')
-                continue
+                case 1:
+                    self.salvaGastoCSV()
+                    continua = self.validaContinuaçaoMenu()
+
+                case 2:
+                    self.deletaGastoCSV()
+                    continua = self.validaContinuaçaoMenu()
+
+                case 3:
+                    self.apresentaGastosCSV()
+                    continua = self.validaContinuaçaoMenu()
+                
+                case 4:
+                    arq.selecionaArquivo()
+                    continua = self.validaContinuaçaoMenu()
+
+                case 5:
+                    arq.mostraArquivo()
+                    continua = self.validaContinuaçaoMenu()
+
+                case 6:
+                    print('Finalizando programa.')
+                    break
+                
+                case _:
+                    print('Opção inválida, tente novamente.')
+                    continue
      
     def salvaGastoCSV(self):
         data = str(input('Data (dd/mm/aaaa) :'))
@@ -133,23 +145,23 @@ class SistemaFinanceiro():
                 return False
 
     def apresentaGastosCSV(self):
-        with open(self.caminhoArquivo, 'r', newline='') as arquivo:
-            registros = csv.reader(arquivo, delimiter=';')
-            for registro in registros:
-                print(f"Data: {registro[0]} / Tipo: {registro[1]} / Valor: {registro[2]}")
+        
+        tabelapd = pd.read_csv(self.caminhoArquivo,sep=';',encoding='latin-1')
+        print (tabelapd)
 
 class Arquivo():
     
     def __init__(self):
         pass
     
-    def selecionaArquivo(self):
-        
+    def selecionaArquivo(self):        
         root = tk.Tk()
         root.withdraw()
         return filedialog.askopenfilename(title="Selecione o arquivo:",filetypes=[("Arquivo CSV","*.csv")])
-        
-       
+    
+    def mostraArquivo(self):
+        print(sistema.caminhoArquivo)
+
 sistema = SistemaFinanceiro()
 
 sistema.iniciaSistema()
