@@ -42,38 +42,40 @@ class SistemaFinanceiro():
             print('4 - Modificar arquivo')
             print('5 - Mostrar arquivo')
             print('6 - Sair')
-
-            opcao = int(input('Selecione uma opção:'))
-            match opcao:
-            
-                case 1:
-                    self.salvaGastoCSV()
-                    continua = self.validaContinuaçaoMenu()
-
-                case 2:
-                    self.deletaGastoCSV()
-                    continua = self.validaContinuaçaoMenu()
-
-                case 3:
-                    self.apresentaGastosCSV()
-                    continua = self.validaContinuaçaoMenu()
+            try:
+                opcao = int(input('Selecione uma opção:'))
+                match opcao:
                 
-                case 4:
-                    self.caminhoArquivo = arq.selecionaArquivo()
-                    continua = self.validaContinuaçaoMenu()
+                    case 1:
+                        self.salvaGastoCSV()
+                        continua = self.validaContinuaçaoMenu()
 
-                case 5:
-                    arq.mostraArquivo(self.caminhoArquivo)
-                    continua = self.validaContinuaçaoMenu()
+                    case 2:
+                        self.deletaGastoCSV()
+                        continua = self.validaContinuaçaoMenu()
 
-                case 6:
-                    print('Finalizando programa.')
-                    break
-                
-                case _:
-                    print('Opção inválida, tente novamente.')
-                    continue
-     
+                    case 3:
+                        self.apresentaGastosCSV()
+                        continua = self.validaContinuaçaoMenu()
+                    
+                    case 4:
+                        self.caminhoArquivo = arq.selecionaArquivo()
+                        continua = self.validaContinuaçaoMenu()
+
+                    case 5:
+                        arq.mostraArquivo(self.caminhoArquivo)
+                        continua = self.validaContinuaçaoMenu()
+
+                    case 6:
+                        print('Finalizando programa.')
+                        break
+                    
+                    case _:
+                        print('Opção inválida, tente novamente.')
+                        continue
+            except ValueError:
+                print("Opção inválida, digite um número.")
+                continue
     def salvaGastoCSV(self):
         
         with open(self.caminhoArquivo, 'r', newline='') as arquivo:
